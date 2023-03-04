@@ -8,12 +8,29 @@ This module contains an entry point that:
 import numpy as np
 from argparse import ArgumentParser
 
-if __name__ == "__main__":
-    # Create your argument parser object here.
-    # Collect the filename arguments from the command line
-    # Rewrite your 5_3 logic here so that it utilizes the arguments passed from the command line.
+def process_data(infile, outfile):
+    # Load the data from the input file
+    data = np.loadtxt(infile, delimiter=",")
 
-    # Tests will run your command using a system call.
-    # To test your program with arguments, run it from the command line
-    # (see README.md for more details)
-    pass
+    # Shift the data to have a mean of 0
+    shifted = data - np.mean(data, axis=0)
+
+    # Scale the data to have a standard deviation of 1
+    scaled = shifted / np.std(shifted, axis=0)
+
+    # Save the processed data to the output file
+    np.savetxt(outfile, scaled, delimiter=",")
+
+if __name__ == "__main__":
+    # Create the argument parser object
+    parser = ArgumentParser(description="This program applies a standard scale transform to the data in infile and writes it to outfile.")
+
+    # Add the input and output file arguments
+    parser.add_argument("infile", help="Input file of data to be processed")
+    parser.add_argument("outfile", help="Output file for processed data")
+
+    # Parse the arguments from the command line
+    args = parser.parse_args()
+
+    # Call the process_data function with the input and output filenames
+    process_data(args.infile, args.outfile)
