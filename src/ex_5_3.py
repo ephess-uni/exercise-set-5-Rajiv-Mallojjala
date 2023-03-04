@@ -8,7 +8,7 @@ This module contains an entry point that:
 import numpy as np
 from argparse import ArgumentParser
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     # Create your argument parser object here.
     # Collect the filename arguments from the command line
     # Rewrite your 5_3 logic here so that it utilizes the arguments passed from the command line.
