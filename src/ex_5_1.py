@@ -12,7 +12,7 @@ def main(infile):
     line_count(infile)
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     # Create your argument parser object here.
     # Collect the filename argument from the command line
     # pass this argument to the main function above
@@ -25,3 +25,4 @@ if __name__ == "_main_":
                         help='Filename to count the lines in it')
     args = parser.parse_args()
     main(args.filename)
+    # end
