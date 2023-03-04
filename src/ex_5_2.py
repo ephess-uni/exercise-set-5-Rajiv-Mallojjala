@@ -7,6 +7,8 @@ This module contains an entry point that
 - writes the processed data to a file called `ex_5_2-processed.csv`
 """
 import numpy as np
+data = np.random.normal(size=(100, 5))
+
 
 try:
     from src.util import get_repository_root
@@ -21,6 +23,12 @@ if __name__ == "__main__":
     INFILE = root_dir / "data" / "ex_5_2-data.csv"
     OUTFILE = root_dir / "outputs" / "ex_5_2-processed.csv"
 
-    # Complete the data processing steps using numpy here.
+    # TODO: Center the data by subtracting the mean of each column
+    data_mean = np.mean(data, axis=0)
+    centered = data - data_mean
+    # TODO: Standardize the data by dividing each column by its standard deviation
+    data_std = np.std(centered, axis=0)
+    processed = centered / data_std
 
-    # Save the output to OUTFILE using numpy routines.
+    # Save the processed data to a file
+    np.savetxt('processed_data.txt', processed, fmt='%.3f')
