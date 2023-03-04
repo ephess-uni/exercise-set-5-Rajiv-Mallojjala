@@ -4,7 +4,7 @@ def line_count(infile):
     print(len(line))
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     # get the utility function for path discovery
     try:
         from src.util import get_repository_root
