@@ -14,7 +14,7 @@ except ImportError:
     from util import get_repository_root
 
 
-if _name_ == "_main_":
+if __name__ == "_main_":
 
     # Use these predefined input / output files
     root_dir = get_repository_root()
