@@ -3,12 +3,16 @@ def line_count(infile):
     with open(infile) as f:
         lines = f.readlines()
         num_lines = len(lines)
-        return str(num_lines)
+        return num_lines
 
 
 if __name__ == "__main__":
-    line_count("example.txt")
+    print("Number of lines in file {}: {}".format("example.txt", line_count("example.txt")))
+    try:
+        from src.util import get_repository_root
+    except ImportError:
+        from util import get_repository_root
 
-    from pathlib import Path
-    data_directory = Path("data")
-    line_count(data_directory / "ex_5_2-data.csv")
+    # Test line_count with a file from the data directory
+    data_directory = get_repository_root() / "data"
+    print("Number of lines in file {}: {}".format(data_directory / "ex_5_2-data.csv", line_count(data_directory / "ex_5_2-data.csv")))
